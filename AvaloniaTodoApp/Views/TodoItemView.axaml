@@ -2,46 +2,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="using:FirstAvaloniaApp.ViewModels"
+             xmlns:vm="using:AvaloniaTodoApp.ViewModels"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="60"
-             x:Class="FirstAvaloniaApp.Views.TodoItemView"
+             x:Class="AvaloniaTodoApp.Views.TodoItemView"
              x:DataType="vm:TodoItemViewModel">
-    
+
     <!-- This control represents a single todo item in the list -->
-    <Border Background="#1e2028" 
-            CornerRadius="8" 
-            Padding="12" 
+    <Border Background="#1e2028"
+            CornerRadius="8"
+            Padding="12"
             Margin="0,2">
         <Border.Transitions>
             <Transitions>
-                <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                <BrushTransition Property="Background" Duration="0:0:0.2" />
             </Transitions>
         </Border.Transitions>
-        
+
         <Border.Styles>
             <Style Selector="Border:pointerover">
-                <Setter Property="Background" Value="#292d3a"/>
-                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="#292d3a" />
+                <Setter Property="Cursor" Value="Hand" />
             </Style>
         </Border.Styles>
 
         <Grid ColumnDefinitions="Auto,*,Auto">
             <!-- Checkbox for marking todo as complete -->
-            <CheckBox Grid.Column="0" 
-                      IsChecked="{Binding IsCompleted}" 
+            <CheckBox Grid.Column="0"
+                      IsChecked="{Binding IsCompleted}"
                       VerticalAlignment="Center"
-                      Margin="0,0,12,0"/>
-            
+                      Margin="0,0,12,0" />
+
             <!-- Todo content (title and date) -->
             <Grid Grid.Column="1" RowDefinitions="Auto,Auto" VerticalAlignment="Center">
                 <!-- Priority indicator (colored dot) -->
                 <Grid Grid.Row="0" ColumnDefinitions="Auto,*">
-                    <Ellipse Width="8" Height="8" Fill="#f2a365" Margin="0,0,8,0" VerticalAlignment="Center"/>
-                    
+                    <Ellipse Width="8" Height="8" Fill="#f2a365" Margin="0,0,8,0" VerticalAlignment="Center" />
+
                     <!-- Title with style based on completed status -->
                     <TextBlock Name="TitleText"
-                               Grid.Column="1" 
-                               Text="{Binding Title}" 
+                               Grid.Column="1"
+                               Text="{Binding Title}"
                                TextWrapping="Wrap"
                                FontSize="16"
                                VerticalAlignment="Center"
@@ -51,10 +51,10 @@
                                 <Style.Animations>
                                     <Animation Duration="0:0:0.2">
                                         <KeyFrame Cue="0%">
-                                            <Setter Property="Opacity" Value="1.0"/>
+                                            <Setter Property="Opacity" Value="1.0" />
                                         </KeyFrame>
                                         <KeyFrame Cue="100%">
-                                            <Setter Property="Opacity" Value="1.0"/>
+                                            <Setter Property="Opacity" Value="1.0" />
                                         </KeyFrame>
                                     </Animation>
                                 </Style.Animations>
@@ -62,36 +62,37 @@
                         </TextBlock.Styles>
                     </TextBlock>
                 </Grid>
-                
+
                 <!-- Date the todo was created -->
-                <TextBlock Grid.Row="1" 
-                           Text="{Binding CreatedDate}" 
-                           Opacity="0.6" 
+                <TextBlock Grid.Row="1"
+                           Text="{Binding CreatedDate}"
+                           Opacity="0.6"
                            FontSize="11"
-                           Margin="16,3,0,0"/>
+                           Margin="16,3,0,0" />
             </Grid>
-            
+
             <!-- Delete button -->
-            <Button Grid.Column="2" 
-                    Background="Transparent" 
+            <Button Grid.Column="2"
+                    Background="Transparent"
                     BorderThickness="0"
                     Padding="10,5"
                     Name="DeleteButton"
                     VerticalAlignment="Center">
                 <Button.Styles>
                     <Style Selector="Button:pointerover">
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="Opacity" Value="1"/>
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="Opacity" Value="1" />
                     </Style>
                     <Style Selector="Button">
-                        <Setter Property="Opacity" Value="0.6"/>
+                        <Setter Property="Opacity" Value="0.6" />
                     </Style>
                 </Button.Styles>
-                <PathIcon Data="M256 0c-8.8 0-16 7.2-16 16v16H48C21.5 32 0 53.5 0 80v80c0 8.8 7.2 16 16 16h16v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V176h16c8.8 0 16-7.2 16-16V80c0-26.5-21.5-48-48-48H272V16c0-8.8-7.2-16-16-16zm248 168h-56v223.8c0 12.4-10.1 22.3-22.5 22-11.7-.3-20.9-10.1-20.5-21.9V168h-81v223.8c0 12.4-10.1 22.3-22.5 22-11.7-.3-20.9-10.1-20.5-21.9V168H224v223.8c0 12.4-10.1 22.3-22.5 22-11.7-.3-20.9-10.1-20.5-21.9V168H168V352c0 35.3 28.7 64 64 64h164c35.3 0 64-28.7 64-64V168z" 
-                          Width="14" 
-                          Height="14"
-                          Foreground="#ff6b6b"/>
+                <PathIcon
+                    Data="M256 0c-8.8 0-16 7.2-16 16v16H48C21.5 32 0 53.5 0 80v80c0 8.8 7.2 16 16 16h16v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V176h16c8.8 0 16-7.2 16-16V80c0-26.5-21.5-48-48-48H272V16c0-8.8-7.2-16-16-16zm248 168h-56v223.8c0 12.4-10.1 22.3-22.5 22-11.7-.3-20.9-10.1-20.5-21.9V168h-81v223.8c0 12.4-10.1 22.3-22.5 22-11.7-.3-20.9-10.1-20.5-21.9V168H224v223.8c0 12.4-10.1 22.3-22.5 22-11.7-.3-20.9-10.1-20.5-21.9V168H168V352c0 35.3 28.7 64 64 64h164c35.3 0 64-28.7 64-64V168z"
+                    Width="14"
+                    Height="14"
+                    Foreground="#ff6b6b" />
             </Button>
         </Grid>
     </Border>
-</UserControl> 
+</UserControl>

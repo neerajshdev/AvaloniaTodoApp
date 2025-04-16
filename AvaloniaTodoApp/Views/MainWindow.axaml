@@ -1,11 +1,11 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:FirstAvaloniaApp.ViewModels"
+        xmlns:vm="using:AvaloniaTodoApp.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="using:FirstAvaloniaApp.Views"
+        xmlns:views="using:AvaloniaTodoApp.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
-        x:Class="FirstAvaloniaApp.Views.MainWindow"
+        x:Class="AvaloniaTodoApp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="{Binding Title}"
@@ -20,7 +20,7 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel />
     </Design.DataContext>
-    
+
     <!-- Main layout with gradient background -->
     <Panel>
         <!-- Background with gradient -->
@@ -40,74 +40,74 @@
             <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,25">
                 <StackPanel>
                     <TextBlock Text="AVALONIA TODO APP"
-                             FontSize="28"
-                             FontWeight="Bold"
-                             Foreground="#FFFFFF" />
+                               FontSize="28"
+                               FontWeight="Bold"
+                               Foreground="#FFFFFF" />
                     <TextBlock Text="{Binding CurrentDate}"
-                             FontSize="14"
-                             Foreground="#aaaaaa"
-                             Margin="2,5,0,0" />
+                               FontSize="14"
+                               Foreground="#aaaaaa"
+                               Margin="2,5,0,0" />
                 </StackPanel>
-                
+
                 <!-- Stats summary -->
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="15" VerticalAlignment="Center">
                     <Border Background="#252833" CornerRadius="8" Padding="15,10">
                         <StackPanel>
-                            <TextBlock Text="{Binding CompletedCount}" 
-                                     HorizontalAlignment="Center" 
-                                     FontSize="20" 
-                                     FontWeight="Bold" 
-                                     Foreground="#52de97"/>
-                            <TextBlock Text="Completed" 
-                                     HorizontalAlignment="Center" 
-                                     FontSize="12" 
-                                     Foreground="#cccccc"/>
+                            <TextBlock Text="{Binding CompletedCount}"
+                                       HorizontalAlignment="Center"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       Foreground="#52de97" />
+                            <TextBlock Text="Completed"
+                                       HorizontalAlignment="Center"
+                                       FontSize="12"
+                                       Foreground="#cccccc" />
                         </StackPanel>
                     </Border>
-                    
+
                     <Border Background="#252833" CornerRadius="8" Padding="15,10">
                         <StackPanel>
-                            <TextBlock Text="{Binding PendingCount}" 
-                                     HorizontalAlignment="Center" 
-                                     FontSize="20" 
-                                     FontWeight="Bold" 
-                                     Foreground="#f2a365"/>
-                            <TextBlock Text="Pending" 
-                                     HorizontalAlignment="Center" 
-                                     FontSize="12" 
-                                     Foreground="#cccccc"/>
+                            <TextBlock Text="{Binding PendingCount}"
+                                       HorizontalAlignment="Center"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       Foreground="#f2a365" />
+                            <TextBlock Text="Pending"
+                                       HorizontalAlignment="Center"
+                                       FontSize="12"
+                                       Foreground="#cccccc" />
                         </StackPanel>
                     </Border>
                 </StackPanel>
             </Grid>
-            
+
             <!-- Main content area with todos and details -->
             <Grid Grid.Row="1" ColumnDefinitions="350,*">
                 <!-- Left panel - Todo list and add new todo -->
                 <Grid Grid.Column="0" RowDefinitions="*,Auto" Margin="0,0,15,0">
                     <!-- Todo list -->
-                    <Border Grid.Row="0" 
-                            Background="#252833" 
-                            CornerRadius="12" 
-                            Padding="15" 
+                    <Border Grid.Row="0"
+                            Background="#252833"
+                            CornerRadius="12"
+                            Padding="15"
                             Margin="0,0,0,15"
                             BoxShadow="0 4 8 0 #15000000">
                         <!-- Header -->
                         <Grid RowDefinitions="Auto,*">
                             <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,15">
-                                <TextBlock Text="My Tasks" 
-                                         FontSize="18" 
-                                         FontWeight="SemiBold" 
-                                         Foreground="#FFFFFF"/>
-                                
-                                <Button Grid.Column="1" 
-                                        Content="Clear Completed" 
+                                <TextBlock Text="My Tasks"
+                                           FontSize="18"
+                                           FontWeight="SemiBold"
+                                           Foreground="#FFFFFF" />
+
+                                <Button Grid.Column="1"
+                                        Content="Clear Completed"
                                         Command="{Binding ClearCompletedCommand}"
-                                        Classes="transparent" 
-                                        Padding="10,5" 
-                                        Foreground="#aaaaaa"/>
+                                        Classes="transparent"
+                                        Padding="10,5"
+                                        Foreground="#aaaaaa" />
                             </Grid>
-                        
+
                             <!-- List of todos with scrolling support -->
                             <ScrollViewer Grid.Row="1">
                                 <ListBox ItemsSource="{Binding TodoItems}"
@@ -118,16 +118,16 @@
                                     <ListBox.Styles>
                                         <!-- Remove default selection styling -->
                                         <Style Selector="ListBoxItem">
-                                            <Setter Property="Padding" Value="0"/>
-                                            <Setter Property="Margin" Value="0"/>
-                                            <Setter Property="BorderThickness" Value="0"/>
-                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Padding" Value="0" />
+                                            <Setter Property="Margin" Value="0" />
+                                            <Setter Property="BorderThickness" Value="0" />
+                                            <Setter Property="Background" Value="Transparent" />
                                         </Style>
                                         <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
-                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Background" Value="Transparent" />
                                         </Style>
                                         <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
-                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Background" Value="Transparent" />
                                         </Style>
                                     </ListBox.Styles>
                                     <ListBox.ItemTemplate>
@@ -140,52 +140,52 @@
                             </ScrollViewer>
                         </Grid>
                     </Border>
-                    
+
                     <!-- Add new todo section -->
-                    <Border Grid.Row="1" 
-                            Background="#252833" 
-                            CornerRadius="12" 
+                    <Border Grid.Row="1"
+                            Background="#252833"
+                            CornerRadius="12"
                             Padding="15"
                             BoxShadow="0 4 8 0 #15000000">
                         <Grid ColumnDefinitions="*,Auto">
                             <!-- Text input for new todo -->
-                            <TextBox Grid.Column="0" 
-                                     Watermark="Add a new task..." 
-                                     Text="{Binding NewTodoTitle}" 
+                            <TextBox Grid.Column="0"
+                                     Watermark="Add a new task..."
+                                     Text="{Binding NewTodoTitle}"
                                      Margin="0,0,10,0"
                                      BorderThickness="0"
                                      Background="#1e2028"
                                      CornerRadius="6"
-                                     Padding="12,8"/>
-                            
+                                     Padding="12,8" />
+
                             <!-- Add button -->
-                            <Button Grid.Column="1" 
-                                    Content="Add Task" 
-                                    Command="{Binding AddTodoCommand}" 
+                            <Button Grid.Column="1"
+                                    Content="Add Task"
+                                    Command="{Binding AddTodoCommand}"
                                     Padding="15,8"
                                     Background="#4169E1"
                                     Foreground="White"
-                                    CornerRadius="6"/>
+                                    CornerRadius="6" />
                         </Grid>
                     </Border>
                 </Grid>
-                
+
                 <!-- Right panel - Todo details -->
-                <Border Grid.Column="1" 
-                        Background="#252833" 
-                        CornerRadius="12" 
-                        Padding="20" 
+                <Border Grid.Column="1"
+                        Background="#252833"
+                        CornerRadius="12"
+                        Padding="20"
                         Margin="15,0,0,0"
                         BoxShadow="0 4 8 0 #15000000">
                     <!-- Content to show when a todo is selected -->
                     <Grid RowDefinitions="Auto,*">
-                        <TextBlock Grid.Row="0" 
-                                   Text="Task Details" 
-                                   FontSize="22" 
-                                   FontWeight="SemiBold" 
+                        <TextBlock Grid.Row="0"
+                                   Text="Task Details"
+                                   FontSize="22"
+                                   FontWeight="SemiBold"
                                    Foreground="#FFFFFF"
-                                   Margin="0,0,0,15"/>
-                        
+                                   Margin="0,0,0,15" />
+
                         <!-- Selected todo info or message if none is selected -->
                         <Panel Grid.Row="1">
                             <!-- Show this if no todo is selected -->
@@ -196,26 +196,27 @@
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center">
                                 <StackPanel Spacing="15" Width="300">
-                                    <PathIcon Data="M256 88.004c-94.805 0-172.006 77.201-172.006 172.006 0 97.996 165.94 257.98 172.006 257.98 5.83 0 172.006-159.984 172.006-257.98 0-94.805-77.201-172.006-172.006-172.006zM256.002 382c-67.052 0-122-54.948-122-122s54.948-122 122-122c67.052 0 122 54.948 122 122s-54.948 122-122 122zM256.097 186.515c-40.419 0-73.374 32.955-73.374 73.374 0 5.208 4.592 9.799 9.799 9.799s9.799-4.592 9.799-9.799c0-30.021 24.755-54.775 54.775-54.775 5.208 0 9.799-4.592 9.799-9.799s-4.59-9.8-9.798-9.8z"
-                                               Width="60"
-                                               Height="60"
-                                               Foreground="#444444"
-                                               HorizontalAlignment="Center"/>
-                                    <TextBlock Text="Select a task to see details" 
-                                               HorizontalAlignment="Center" 
+                                    <PathIcon
+                                        Data="M256 88.004c-94.805 0-172.006 77.201-172.006 172.006 0 97.996 165.94 257.98 172.006 257.98 5.83 0 172.006-159.984 172.006-257.98 0-94.805-77.201-172.006-172.006-172.006zM256.002 382c-67.052 0-122-54.948-122-122s54.948-122 122-122c67.052 0 122 54.948 122 122s-54.948 122-122 122zM256.097 186.515c-40.419 0-73.374 32.955-73.374 73.374 0 5.208 4.592 9.799 9.799 9.799s9.799-4.592 9.799-9.799c0-30.021 24.755-54.775 54.775-54.775 5.208 0 9.799-4.592 9.799-9.799s-4.59-9.8-9.798-9.8z"
+                                        Width="60"
+                                        Height="60"
+                                        Foreground="#444444"
+                                        HorizontalAlignment="Center" />
+                                    <TextBlock Text="Select a task to see details"
+                                               HorizontalAlignment="Center"
                                                TextWrapping="Wrap"
                                                TextAlignment="Center"
-                                               Opacity="0.7" 
+                                               Opacity="0.7"
                                                FontSize="18"
-                                               Foreground="#aaaaaa"/>
+                                               Foreground="#aaaaaa" />
                                 </StackPanel>
                             </Border>
-                            
+
                             <!-- Show this if a todo is selected (hidden otherwise) -->
                             <Grid RowDefinitions="Auto,Auto,*,Auto"
                                   IsVisible="{Binding SelectedTodo, Converter={x:Static ObjectConverters.IsNotNull}}"
                                   Margin="5">
-                                
+
                                 <!-- Task completed status -->
                                 <Border Grid.Row="0"
                                         Background="#1e2028"
@@ -224,15 +225,15 @@
                                         Margin="0,0,0,15">
                                     <Grid ColumnDefinitions="*,Auto">
                                         <StackPanel VerticalAlignment="Center">
-                                            <TextBlock Text="Task Status" 
-                                                       FontSize="14" 
-                                                       Opacity="0.6"/>
+                                            <TextBlock Text="Task Status"
+                                                       FontSize="14"
+                                                       Opacity="0.6" />
                                             <TextBlock x:Name="TaskStatusText"
                                                        Text="Pending"
                                                        FontSize="18"
-                                                       FontWeight="Medium"/>
+                                                       FontWeight="Medium" />
                                         </StackPanel>
-                                        
+
                                         <Button x:Name="StatusToggleButton"
                                                 Grid.Column="1"
                                                 Command="{Binding ToggleTodoCompletionCommand}"
@@ -241,10 +242,10 @@
                                                 Padding="15,8"
                                                 Background="#f2a365"
                                                 Foreground="White"
-                                                CornerRadius="6"/>
+                                                CornerRadius="6" />
                                     </Grid>
                                 </Border>
-                                
+
                                 <!-- Task title -->
                                 <Border Grid.Row="1"
                                         Background="#1e2028"
@@ -252,18 +253,18 @@
                                         Padding="15"
                                         Margin="0,0,0,15">
                                     <StackPanel>
-                                        <TextBlock Text="Task Title" 
-                                                   FontSize="14" 
+                                        <TextBlock Text="Task Title"
+                                                   FontSize="14"
                                                    Opacity="0.6"
-                                                   Margin="0,0,0,8"/>
-                                        <TextBox Text="{Binding SelectedTodo.Title}" 
+                                                   Margin="0,0,0,8" />
+                                        <TextBox Text="{Binding SelectedTodo.Title}"
                                                  FontSize="18"
                                                  Background="Transparent"
                                                  BorderThickness="0"
-                                                 Padding="0"/>
+                                                 Padding="0" />
                                     </StackPanel>
                                 </Border>
-                                
+
                                 <!-- Task description -->
                                 <Border Grid.Row="2"
                                         Background="#1e2028"
@@ -272,33 +273,33 @@
                                         Margin="0,0,0,15">
                                     <Grid RowDefinitions="Auto,*">
                                         <TextBlock Grid.Row="0"
-                                                   Text="Description" 
-                                                   FontSize="14" 
+                                                   Text="Description"
+                                                   FontSize="14"
                                                    Opacity="0.6"
-                                                   Margin="0,0,0,8"/>
+                                                   Margin="0,0,0,8" />
                                         <TextBox Grid.Row="1"
-                                                 Text="{Binding SelectedTodo.Description}" 
-                                                 Watermark="Add a description for this task..." 
-                                                 AcceptsReturn="True" 
+                                                 Text="{Binding SelectedTodo.Description}"
+                                                 Watermark="Add a description for this task..."
+                                                 AcceptsReturn="True"
                                                  TextWrapping="Wrap"
                                                  Background="Transparent"
                                                  BorderThickness="0"
                                                  Padding="0"
-                                                 VerticalAlignment="Stretch"/>
+                                                 VerticalAlignment="Stretch" />
                                     </Grid>
                                 </Border>
-                                
+
                                 <!-- Created date -->
                                 <Border Grid.Row="3"
                                         Background="#1e2028"
                                         CornerRadius="8"
                                         Padding="15">
                                     <StackPanel Orientation="Horizontal" Spacing="5">
-                                        <TextBlock Text="Created:" 
-                                                   FontSize="14" 
-                                                   Opacity="0.6"/>
-                                        <TextBlock Text="{Binding SelectedTodo.CreatedDate}" 
-                                                   FontSize="14"/>
+                                        <TextBlock Text="Created:"
+                                                   FontSize="14"
+                                                   Opacity="0.6" />
+                                        <TextBlock Text="{Binding SelectedTodo.CreatedDate}"
+                                                   FontSize="14" />
                                     </StackPanel>
                                 </Border>
                             </Grid>
